@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nana's Cart [CV]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@300;400;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-image: url('mart.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    .page-container {
+      position: relative;
+      padding-top: 80px;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      background-color: #fff;
+      padding: 10px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 15px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .top-nav a:hover {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    .main-header {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .main-header h1 {
+      font-family: 'Bangers', cursive;
+      font-size: 8vw;
+      line-height: 1.1;
+      color: #000;
+      text-shadow:
+        -2px -2px 0 #fff,
+        2px -2px 0 #fff,
+        -2px 2px 0 #fff,
+        2px 2px 0 #fff;
+    }
+
+    .main-header h1 span {
+      color: #127a3c;
+      text-shadow:
+        -2px -2px 0 #fff,
+        2px -2px 0 #fff,
+        -2px 2px 0 #fff,
+        2px 2px 0 #fff;
+    }
+
+    .contact-info-header {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .contact-info-header a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #333;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    .contact-info-header a:hover {
+      color: #127a3c;
+      border-bottom: 1px solid #127a3c;
+    }
+
+    .content-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(5px);
+      border: 2px solid #ccc;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 800px;
+      position: relative;
+    }
+
+    .my-photo{
+      text-align: center;
+      padding: 10px;
+    }
+
+    .my-photo img{
+      max-width: 250px;
+      height: auto;
+      border-radius: 10%;
+      border: 5px solid #ffc107;
+      box-shadow: 0 4px 8px rgba(0,0,0,0,2);
+    }
+    .card h2 {
+      font-family: 'Bangers', cursive;
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #127a3c;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card p,
+    .card li {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    .card ul {
+      padding-left: 15px;
+    }
+
+    .sub-heading {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #127a3c;
+    }
+
+    .item {
+      margin-bottom: 20px;
+    }
+
+    .item h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-list li {
+      background-color: #ffc107;
+      color: #000;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+
+    .footer-contact {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-top: 2px dashed #ccc;
+      width: 100%;
+    }
+
+    .footer-contact a {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav {
+        flex-direction: column;
+        position: static;
+        width: 100%;
+        top: 0;
+        right: 0;
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: none;
+      }
+
+      .page-container {
+        padding-top: 0;
+      }
+
+      .main-header h1 {
+        font-size: 12vw;
+      }
+
+      .content-container {
+        align-items: center;
+      }
+
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="top-nav">
+    <a href="#foto-profil">Foto Profil</a>
+    <a href="#deskripsi-singkat">Deskripsi</a>
+    <a href="#pendidikan">Pendidikan</a>
+    <a href="#organisasi">Organisasi</a>
+    <a href="#kemampuan">Kemampuan</a>
+    <a href="#bahasa">Bahasa</a>
+  </nav>
+
+  <div class="page-container">
+
+    <main class="content-container">
+
+      <section id="foto-profil" class="card my-photo">
+        <img src="nana.gif">
+      </section>
+
+      <section id="deskripsi-singkat" class="card">
+        <div class="card-content">
+          <h2>Deskripsi Singkat</h2>
+          <h3>NAJWA ULYA NAJJINI</h3>
+          <p>Saya adalah Mahasiswi Sarjana Sistem Informasi di Telkom University dengan pemahaman kuat dalam
+            <b>algoritma</b> dan ketertarikan mendalam pada <b>programming</b>. Berbekal pengalaman sebagai Sekretaris
+            Organisasi dan Desainer Grafis, saya terampil dalam <b>manajemen waktu</b> dan <b>komunikasi efektif</b>.
+            Bersemangat untuk mengaplikasikan keahlian teknis dan non-teknis dalam peran Junior Programmer atau IT
+            Support. Terbuka untuk mempelajari dan mendalami hal baru. Berencana untuk berkarier pada bidang UI/UX atau
+            Data Analyst.</p>
+        </div>
+      </section>
+
+      <section id="pendidikan" class="card">
+        <div class="card-content">
+          <h2>Riwayat Pendidikan</h2>
+          <ul>
+            <li>
+              <p><b>S1 Sistem Informasi<br>Telkom University Jakarta | 2024 - Sekarang</b><br>Mahasiswi aktif di program
+                studi <b>Sistem Informasi</b>, mendalami kurikulum yang berfokus pada perpaduan teknologi informasi dan
+                manajemen bisnis. Mempelajari konsep inti pengembangan perangkat lunak, analisis sistem, dan manajemen
+                proyek TI, serta menguasai dasar-dasar pemrograman dan database.</p>
+            </li>
+            <li>
+              <p><b>Jurusan MIPA<br>SMA Negeri 4 Cibinong (MIPA), Bogor | 2021 - 2024</b><br>Lulusan dari program studi
+                <b>Ilmu Pengetahuan Alam (MIPA)</b> dengan fokus pada mata pelajaran eksak. Mengembangkan kemampuan
+                analisis, pemecahan masalah logis, dan berpikir kritis. Berhasil menyelesaikan berbagai tugas dan proyek
+                yang menuntut ketelitian dan pemahaman konsep yang kuat, yang menjadi fondasi penting untuk melanjutkan
+                studi di bidang Sistem Informasi.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="organisasi" class="card">
+        <div class="card-content">
+          <h2>Riwayat Organisasi</h2>
+          <ul>
+            <li>
+              <p><b>Sekretaris Organisasi, Japan Club | 2022 - 2023</b><br>Menjabat sebagai Sekretaris, saya bertanggung
+                jawab penuh atas <b>manajemen administratif</b> dan <b>dokumentasi kegiatan organisasi</b>. Tugas utama
+                meliputi penyusunan notulensi rapat, pengelolaan arsip keanggotaan dan surat-menyurat, serta pembuatan
+                laporan kegiatan.</p>
+            </li><hr><br>
+            <li>
+              <p><b>Desain Grafis dan Seksi Dekorasi, Kegiatan Pekan Bazaar Sekolah (SMA) | 2022 - 2023</b><br>Berperan
+                ganda sebagai <b>Desain Grafis</b> dan <b>Seksi Dekorasi</b> dalam acara tahunan sekolah. Menggunakan
+                kreativitas dan keterampilan teknis untuk merancang materi promosi visual, termasuk poster digital,
+                brosur, dan konten media sosial. Selain itu, saya juga memimpin tim dalam konsep dan eksekusi dekorasi
+                area bazaar.</p>
+            </li><hr><br>
+            <li>
+              <p><b>Divisi Media Kreatif, UKM Seni Budaya Telkom University Jakarta | 2024 - Sekarang</b><br>Bertanggung
+                jawab penuh atas <b>manajemen konten visual</b> dan <b>promosi UKM</b>. Membuat <b>desain grafis</b>, <b>poster</b>,
+                dan <b>konten video</b> untuk media sosial (Instagram, TikTok).</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="kemampuan" class="card">
+        <div class="card-content">
+          <h2>Kemampuan</h2>
+          <h3 class="sub-heading">Hard Skill</h3>
+          <ul class="skill-list">
+            <li>C#</li>
+            <li>Java</li>
+            <li>JavaScript</li>
+            <li>MySQL</li>
+          </ul>
+          <h3 class="sub-heading">Perangkat Lunak</h3>
+          <ul class="skill-list">
+            <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+            <li>Figma</li>
+            <li>Canva</li>
+            <li>Capcut</li>
+            <li>IbisPaint</li>
+          </ul>
+          <h3 class="sub-heading">Soft Skill</h3>
+          <ul>
+            <li>Komunikasi</li>
+            <li>Manajemen Waktu</li>
+            <li>Kreativitas</li>
+            <li>
+              <p>Perhatian terhadap Detail</p>
+            </li>
+            <li>
+              <p>Fotografi</p>
+            </li>
+            <li>
+              <p>Menggambar (Tradisional dan Digital)</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="bahasa" class="card">
+        <div class="card-content">
+          <h2>Bahasa</h2>
+          <ul>
+            <li>
+              <p>Bahasa Indonesia (Penutur Asli / <i>Native</i> )</p>
+            </li>
+            <li>
+              <p>Bahasa Inggris (Mahir / <i>Intermediate</i> )</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer id="kontak" class="footer-contact">
+      <p>Hubungi saya: <a href="mailto:najwaulya53@gmail.com">najwaulya53@gmail.com</a> | <a
+          href="https://www.linkedin.com/in/najwa-ulya-najjini-4a972b333/" target="_blank">LinkedIn</a> | Telp. :
+      (+62) 858-1358-5297 | Bogor, Jawa Barat 16810</p>
+    </footer>
+  </div>
+</body>
+
+</html>
